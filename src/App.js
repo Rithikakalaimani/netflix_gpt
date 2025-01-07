@@ -1,11 +1,9 @@
-
+import React from 'react';
 import './App.css';
-
+import Body from "./Components/Body";
 function App() {
   return (
-    <div className="">
-     <p className="m-1 font-extrabold">Hello</p>
-    </div>
+   <Body/>
   );
 }
 
