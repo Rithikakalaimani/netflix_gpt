@@ -2,7 +2,29 @@
 -create react app
 -configured tailwindcss
 -Header 
+-Routing
 -Login form
+-SignUp form
+-Form validation
+-useRef Hook
+-Firebase SetUp
+-Deploying app to production 
+-created user signup account 
+-Implement signin user Api
+-created Redux store with UserSlice
+-Implemented SignOut 
+-Updated user profile 
+-BugFix : if user is not logged in Redirect/Browse to login page and vice-versa  
+-Unsubscribe to the onAuthStateChange callback
+-Fetch movies form TMBD
+-Add hardcoded values to the constant file (promotes a clean code)
+-Get data from the TMBD now playing movies list API
+-Custom Hooks
+-Update store with movie data and trailer video
+-Main container and secondary container 
+-fetch data for Trailer video 
+-embedded yt video(autoplay and mute)
+- 
 
 # Features
 -Login/sign Up 
