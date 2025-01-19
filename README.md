@@ -25,7 +25,8 @@
 -fetch data for Trailer video 
 -embedded yt video(autoplay and mute)
 -Build Secondary Component 
--
+-Build the movie list 
+-Builde Movie card 
 # Features
 -Login/sign Up 
 -Redirect to Browse page 
