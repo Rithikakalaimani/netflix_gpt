@@ -21,11 +21,11 @@
 -Get data from the TMBD now playing movies list API
 -Custom Hooks
 -Update store with movie data and trailer video
--Main container and secondary container 
+-Build Main container 
 -fetch data for Trailer video 
 -embedded yt video(autoplay and mute)
-- 
-
+-Build Secondary Component 
+-
 # Features
 -Login/sign Up 
 -Redirect to Browse page 
