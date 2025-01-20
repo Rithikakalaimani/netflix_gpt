@@ -7,7 +7,7 @@ import {auth} from "../Utils/firebase";
 import {useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import {addUser} from "../Utils/userSlice";
-import { PHOTO_URL } from '../Utils/constant';
+import { BG_IMG_URL, PHOTO_URL } from '../Utils/constant';
 
 const Login = () => {
 
@@ -17,7 +17,7 @@ const Login = () => {
   const toggleSignInForm = () =>{ 
    setSignInForm(!isSignInForm);
   }
-  const navigate  = useNavigate();
+  // const navigate  = useNavigate();
   const dispatch = useDispatch();
 
   const name = useRef(null);//email validation 
@@ -77,7 +77,6 @@ const Login = () => {
           setErrorMessage(errorCode+"-"+errorMessage);
         });
     }
-
  }
   return (
     <div>
@@ -85,7 +84,7 @@ const Login = () => {
       <div className='absolute'>
         <img
           className='w-screen object-cover  '
-          src='https://assets.nflxext.com/ffe/siteui/vlv3/2f5a878d-bbce-451b-836a-398227a34fbf/web/IN-en-20241230-TRIFECTA-perspective_5ab944a5-1a71-4f6d-b341-8699d0491edd_large.jpg'
+          src={BG_IMG_URL}
           alt='bg'
         />
       </div>

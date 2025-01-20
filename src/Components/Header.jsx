@@ -8,12 +8,14 @@ import { onAuthStateChanged } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { addUser, removeUser } from "../Utils/userSlice";
 import { LOGO_URL } from '../Utils/constant';
-
+import { toggleGPTSearchView } from '../Utils/GPTSlice';
+import { SUPPORTED_LANGUAGES } from '../Utils/constant';
+import { changeLanguage } from '../Utils/configSlice';
 const Header = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate(); 
   const dispatch = useDispatch();
   const user = useSelector((store)=>store.user);
-
+  const showGPTSearch = useSelector((store)=>store.gpt.showGPTSearch)
   const handleSignOut = ()=>{
     signOut(auth)
       .then(() => {
@@ -22,6 +24,14 @@ const Header = () => {
       .catch((error) => {
         navigate("/error");
       });
+  }
+
+  const handleLanguageChange = (e)=>{
+    // console.log(e.target.value);
+    dispatch(changeLanguage(e.target.value));
+  }
+  const handleGPTSearchClick = ()=>{
+    dispatch(toggleGPTSearchView());
   }
 
 // used in the header as the onAuthStateChange as it is central to the app and tracks the user state 
@@ -52,24 +62,35 @@ const Header = () => {
 
   return (
     <div className='z-50 h-20 w-full flex flex-row justify-between absolute bg-gradient-to-b from-black to-transparent overflow-hidden'>
-        <div className="m-2 flex items-center">
-        <img
-          className='w-2/12'
-          src={LOGO_URL}
-          alt='logo'
-        />
-        </div>
-       {user && 
-        (<div className="m-5 px-10 flex items-center">
+      <div className='m-2 flex items-center'>
+        <img className='w-2/12' src={LOGO_URL} alt='logo' />
+      </div>
+      {user && (
+        <div className='m-5 px-10 flex items-center'>
           <img
-            className="m-2 w-10 h-10 rounded-md"
+            className='m-2 w-10 h-10 rounded-md'
             // src='https://occ-0-2041-3662.1.nflxso.net/dnm/api/v6/vN7bi_My87NPKvsBoib006Llxzg/AAAABStlS0MPUGcy6Ovyeia-3ddnnXNb2Lri4P4H4QCFuR_yaGs0umyqHUDOZcOBKF8MFUGHX07txAW70z7wq_S9AKGQ_MixrLQ.png?r=a4b'
             src={user?.photoURL}
             alt='userIcon'
           />
-          <button className="m-2 px-5 py-1 text-sm font-light text-slate-50 whitespace-nowrap"
-          onClick={handleSignOut}>Sign Out</button>
-        </div>)}
+          <button
+            className='m-2 p-2 font-light text-white text-sm whitespace-nowrap'
+            onClick={handleGPTSearchClick}
+          >
+            {showGPTSearch ? "Home" :"GPT"}
+          </button>
+          {showGPTSearch && 
+          <select className="p-1 text-sm rounded-sm outline-none" onChange={handleLanguageChange}>
+            {SUPPORTED_LANGUAGES.map(lang =><option key={lang.identifier} value={lang.identifier}>{lang.name}</option>)}
+          </select>}
+          <button
+            className='m-2  py-1 text-sm font-light text-slate-50 whitespace-nowrap'
+            onClick={handleSignOut}
+          >
+            Sign Out
+          </button>
+        </div>
+      )}
     </div>
   );
 }

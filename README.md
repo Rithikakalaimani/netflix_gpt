@@ -27,6 +27,13 @@
 -Build Secondary Component 
 -Build the movie list 
 -Builde Movie card 
+-GPT search features
+-GPT search bar
+-Multi Language 
+
+
+
+
 # Features
 -Login/sign Up 
 -Redirect to Browse page 
