@@ -27,7 +27,7 @@ const GPTSearchBar = () => {
     const GPTQuery =
       "act as a movie recommendation system and suggest some movies for the query" +
       searchText.current.value +
-      "only give me names of 10 movies,comma-separated like the example result give ahead. Example Result : Coolie , Master, 3idiots, Don, Baahubali, parasite, Interstellar, Avengers, Inception, Tenet .";
+      "only give me names of 20 movies,comma-separated like the example result give ahead. Example Result : Coolie , Master, 3idiots, Don, Baahubali, parasite, Interstellar, Avengers, Inception, Tenet . don't give and words";
 
     const GPTResults = await client.chat.completions.create({
       model: "gpt-4o-mini",
