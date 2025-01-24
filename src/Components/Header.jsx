@@ -63,14 +63,14 @@ import { changeLanguage } from '../Utils/configSlice';
 
 
   return (
-    // <div
-    //   className='z-50 md:h-24 w-full absolute flex flex-col justify-center md:flex-row md:justify-between bg-gradient-to-b from-black to-transparent overflow-hidden
-    //  bg-black'
-    // >
-      <div
-      className={`z-50 md:h-20 w-full flex flex-col absolute justify-center overflow-hidden md:flex-row md:justify-between
+     <div
+      className={`z-50 md:h-20 w-full flex absolute  overflow-hidden flex-row justify-between
         ${user ? "bg-black" : "bg-gradient-to-b from-black to-transparent"}`}
     >
+       {/* <div
+      className={`z-50 md:h-20 w-full flex flex-col absolute justify-center overflow-hidden md:flex-row md:justify-between
+       ${user ? "bg-black" : "bg-gradient-to-b from-black to-transparent"}`}
+     > */}
       <div className='m-2 pt-2 md:pt-0 flex md:items-center'>
         <img className='w-24 md:p-2 md:w-2/12 md:mx-0'
           src={LOGO_URL}
@@ -79,13 +79,13 @@ import { changeLanguage } from '../Utils/configSlice';
         {user && (
           <>
             <button
-              className='md:m-2 p-2 font-light text-white text-sm whitespace-nowrap'
+              className='md:m-2 p-2 font-light text-white text-xs  md:text-sm whitespace-nowrap'
               onClick={handleGPTSearchClick}
             >
               {showGPTSearch ? "Home" : "GPT"}
             </button>
             <button
-              className='m-2  py-1 text-sm font-light text-slate-50 whitespace-nowrap'
+              className='m-2  py-1 text-xs md:text-sm font-light text-slate-50 whitespace-nowrap'
               onClick={handleSignOut}
             >
               Sign Out
@@ -94,7 +94,7 @@ import { changeLanguage } from '../Utils/configSlice';
         )}
       </div>
       {user && (
-        <div className='m-1 px-5 flex items-center'>
+        <div className='m-1 px-2 flex items-center'>
           {showGPTSearch && (
             <select
               className='p-1 text-xs md:text-sm rounded-sm outline-none'
@@ -108,7 +108,7 @@ import { changeLanguage } from '../Utils/configSlice';
             </select>
           )}
           <img
-            className='m-2 md:m-2 md:p-5 w-10 h-10 md:w-32 md:h-20 rounded-md object-cover'
+            className="mx-2 md:mx-10 w-30 h-10  object-cover rounded-md"
             src={user?.photoURL}
             alt='userIcon'
           />
