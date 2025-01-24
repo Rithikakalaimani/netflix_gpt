@@ -49,7 +49,6 @@ const GPTSearchBar = () => {
     console.log("Content:", content);
 
     if (typeof content === "string") {
-    
       const GPTMovies = content
         .split(",") // Split on commas
         .map((movie) => movie.trim()) // Trim whitespace from each movie
@@ -62,22 +61,25 @@ const GPTSearchBar = () => {
       const promiseArray = GPTMovies.map((movie) => handleMovieTMBD(movie));
       const tmbdResults = await Promise.all(promiseArray);
       console.log("TMDB Results:", tmbdResults);
-      dispatch(addGPTMovieResult({ movieNames: GPTMovies, movieResults: tmbdResults }));
+      dispatch(
+        addGPTMovieResult({ movieNames: GPTMovies, movieResults: tmbdResults })
+      );
     }
   };
-
+  // pt-5 p-10
+  // mt-10 pt-10
   return (
-    <div className='bg-black w-screen'>
-      <form className='pt-5 p-10' onSubmit={(e) => e.preventDefault()}>
-        <div className='mt-10 pt-10 flex justify-center'>
+    <div className='w-screen'>
+      <form className='md:pt-5 p-10' onSubmit={(e) => e.preventDefault()}>
+        <div className='mt-12 pt-12 flex justify-center'>
           <input
             ref={searchText}
             type='text'
-            className='m-2 p-2 w-5/6 rounded-md outline-none '
+            className='mt-5 mr-1 md:m-2 p-2 text-xs md:text-sm w-5/6 rounded-md outline-none '
             placeholder={lang[langKey].gptSearchPlaceholder}
           />
           <button
-            className='m-2 p-2 px-5  text-white bg-red-600 rounded-md hover:bg-red-700'
+            className='mt-5 ml-1 md:m-2 p-2  text-xs md:text-sm md:px-5  text-white bg-red-600 rounded-md hover:bg-red-700'
             onClick={handleGPTSearchClick}
           >
             {lang[langKey].search}

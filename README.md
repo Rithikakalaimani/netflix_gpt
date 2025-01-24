@@ -30,6 +30,11 @@
 -GPT search features
 -GPT search bar
 -Multi Language 
+-Get Open AI key
+-fetched GPTMovie Suggestions from TMBD
+-Created GPTSlice and added movies
+-Memoization
+-Added .env file for securing the api keys 
 
 
 

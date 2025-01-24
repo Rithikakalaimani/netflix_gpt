@@ -83,14 +83,15 @@ const Login = () => {
       <Header />
       <div className='absolute'>
         <img
-          className='w-screen object-cover  '
+          className='w-screen h-screen object-cover  '
           src={BG_IMG_URL}
           alt='bg'
         />
       </div>
+      <div className="flex justify-content items-center">
       <form
         onSubmit={(e) => e.preventDefault()}
-        className='p-10 w-4/12 h-[27rem] relative top-40 mr-auto ml-auto bg-black bg-opacity-80 flex flex-col rounded-md'
+        className=' p-5 lg:p-10 w-10/12 md:w-8/12 lg:w-4/12 h-[27rem] relative top-52 md:top-80 lg:top-40 mr-auto ml-auto bg-black bg-opacity-80 flex flex-col rounded-md'
       >
         <h1 className='px-8 pb-2 text-white font-semibold text-3xl'>
           {isSignInForm ? "Sign In" : "Sign Up"}
@@ -148,6 +149,7 @@ const Login = () => {
           </p>
         </div>
       </form>
+      </div>
     </div>
   );
 }
