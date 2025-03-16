@@ -4,6 +4,8 @@ NetflixGPT is a React-based web application that integrates OpenAI's GPT with TM
 
 ![image alt](https://github.com/Rithikakalaimani/netflix_gpt/blob/e1bb5a756952cba035ee923d2a4d9293e75df386/screenshot/Screenshot%202025-01-25%20at%2012.00.48%E2%80%AFAM.png)
 
+![image alt](https://github.com/Rithikakalaimani/netflix_gpt/blob/1dff7f1672e5ceb4d68dbe0d2a55815aa3cf8b8e/screenshot/Screenshot%202025-01-25%20at%2012.01.14%E2%80%AFAM.png)
+
 ## 🚀 Features
 
 ### 🔐 Authentication
