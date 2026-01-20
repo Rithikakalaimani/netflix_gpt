@@ -1,25 +1,24 @@
 import { useState, useEffect } from "react";
-import useMovieTrailer from "../Hooks/useMovieTrailer";
+import useTVShowTrailer from "../Hooks/useTVShowTrailer";
 import { useSelector } from "react-redux";
-import { API_OPTIONS } from "../Utils/constant";
+import { API_OPTIONS, IMG_CDN_URL } from "../Utils/constant";
 
-const VideoBackground = ({movieId}) => {
-  const trailerVideo = useSelector((store) => store.movies?.trailerVideo);
+const TVShowVideoBackgroundHome = ({tvShowId}) => {
+  const trailerVideo = useSelector((store) => store.tvShows?.trailerVideo);
   const [backdropImage, setBackdropImage] = useState(null);
-  useMovieTrailer(movieId);
+  useTVShowTrailer(tvShowId);
 
   useEffect(() => {
-    // Fetch movie backdrop if no video is available
-    if (!trailerVideo?.key && movieId) {
+    if (!trailerVideo?.key && tvShowId) {
       const fetchBackdrop = async () => {
         try {
           const response = await fetch(
-            `https://api.themoviedb.org/3/movie/${movieId}?language=en-US`,
+            `https://api.themoviedb.org/3/tv/${tvShowId}?language=en-US`,
             API_OPTIONS
           );
           const data = await response.json();
           if (data.backdrop_path) {
-            setBackdropImage(`https://image.tmdb.org/t/p/original${data.backdrop_path}`);
+            setBackdropImage(IMG_CDN_URL + data.backdrop_path);
           }
         } catch (error) {
           console.error("Error fetching backdrop:", error);
@@ -29,7 +28,7 @@ const VideoBackground = ({movieId}) => {
     } else {
       setBackdropImage(null);
     }
-  }, [trailerVideo, movieId]);
+  }, [trailerVideo, tvShowId]);
   
   if (!trailerVideo?.key) {
     if (backdropImage) {
@@ -37,7 +36,7 @@ const VideoBackground = ({movieId}) => {
         <div className='w-screen aspect-video relative bg-black'>
           <img
             src={backdropImage}
-            alt="Movie backdrop"
+            alt="TV Show backdrop"
             className='w-screen aspect-video object-cover'
           />
           <div className='absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent' />
@@ -69,4 +68,4 @@ const VideoBackground = ({movieId}) => {
   );
 }
 
-export default VideoBackground
+export default TVShowVideoBackgroundHome;

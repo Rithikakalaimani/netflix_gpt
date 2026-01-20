@@ -2,20 +2,20 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import VideoTitle from "./VideoTitle";
-import VideoBackground from "./VideoBackground";
+import TVShowVideoBackgroundHome from "./TVShowVideoBackgroundHome";
 import MovieInfoCard from "./MovieInfoCard";
 
-const MainContainer = () => {
+const TVShowMainContainer = () => {
   const [showInfoCard, setShowInfoCard] = useState(false);
   const navigate = useNavigate();
-  const movies = useSelector((store) => store.movies?.nowPlayingMovies);
+  const tvShows = useSelector((store) => store.tvShows?.airingTodayTV);
   
-  if (!movies) return;
-  const mainMovie = movies[0];
-  const { original_title, overview, id } = mainMovie;
+  if (!tvShows) return;
+  const mainTVShow = tvShows[0];
+  const { name, overview, id } = mainTVShow;
 
   const handlePlayClick = () => {
-    navigate(`/movie/${id}`);
+    navigate(`/tv/${id}`);
   };
 
   const handleMoreInfoClick = () => {
@@ -29,17 +29,17 @@ const MainContainer = () => {
   return (
     <div className="md:pt-0 pt-20">
       <VideoTitle
-        title={original_title}
+        title={name}
         overview={overview}
         onPlayClick={handlePlayClick}
         onMoreInfoClick={handleMoreInfoClick}
       />
-      <VideoBackground movieId={id} />
+      <TVShowVideoBackgroundHome tvShowId={id} />
       {showInfoCard && (
-        <MovieInfoCard movieId={id} onClose={handleCloseInfoCard} />
+        <MovieInfoCard movieId={id} onClose={handleCloseInfoCard} isTVShow={true} />
       )}
     </div>
   );
 };
 
-export default MainContainer;
+export default TVShowMainContainer;

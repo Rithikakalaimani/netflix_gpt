@@ -1,7 +1,9 @@
+
 export const LOGO_URL =
-  "https://help.nflxext.com/helpcenter/OneTrust/oneTrust_production/consent/87b6a5c0-0104-4e96-a291-092c11350111/01938dc4-59b3-7bbc-b635-c4131030e85f/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png";
+  "https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png";
+// Default profile photo URL - using a reliable Netflix-style avatar
 export const PHOTO_URL =
-  "https://wallpapers.com/images/hd/netflix-profile-pictures-1000-x-1000-qo9h82134t9nv0j0.jpg";
+  "https://occ-0-2041-3662.1.nflxso.net/dnm/api/v6/vN7bi_My87NPKvsBoib006Llxzg/AAAABStlS0MPUGcy6Ovyeia-3ddnnXNb2Lri4P4H4QCFuR_yaGs0umyqHUDOZcOBKF8MFUGHX07txAW70z7wq_S9AKGQ_MixrLQ.png?r=a4b";
 // export const MOVIEBG_URL = "https://api.themoviedb.org/3/movie/939243/videos?language=en-US";
 // export const MOVIELIST_URL = "https://api.themoviedb.org/3/movie/now_playing?page=1";
 export const API_OPTIONS = {
@@ -22,4 +24,4 @@ export const SUPPORTED_LANGUAGES = [
   { identifier: "japanese", name: "Japanese" },
 ];
 
-export const OPENAI_KEY = process.env.REACT_APP_OPENAI_API_KEY;
+export const GROQ_KEY = process.env.REACT_APP_GROQ_API_KEY;
