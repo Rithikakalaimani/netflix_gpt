@@ -19,7 +19,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "npm run build && firebase deploy --only hosting",
+    "deploy": "npm run build && npx firebase deploy --only hosting",
     "predeploy": "npm run build"
   },
   "eslintConfig": {
@@ -43,6 +43,7 @@
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@reduxjs/toolkit": "^2.5.0",
+    "firebase-tools": "^15.3.1",
     "react-router-dom": "^7.1.1",
     "tailwindcss": "^3.4.17"
   }
