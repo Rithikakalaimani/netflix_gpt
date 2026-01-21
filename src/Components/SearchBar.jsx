@@ -75,7 +75,7 @@ const SearchBar = () => {
   };
 
   return (
-    <div className="relative flex-1 max-w-md mx-2 md:mx-4" ref={searchRef}>
+    <div className="relative w-full md:flex-1 md:max-w-md md:mx-2 md:mx-4" ref={searchRef}>
       <form onSubmit={handleSearchSubmit} className="relative">
         <input
           type="text"
@@ -83,7 +83,7 @@ const SearchBar = () => {
           value={searchInput}
           onChange={handleInputChange}
           onFocus={handleFocus}
-          className="w-full px-4 py-2 bg-black bg-opacity-70 border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:border-white transition-all text-sm md:text-base"
+          className="w-full px-3 py-2 md:px-4 md:py-2 bg-black bg-opacity-70 border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:border-white transition-all text-sm md:text-base"
         />
         {searchInput && (
           <button

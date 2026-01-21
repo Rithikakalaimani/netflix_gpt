@@ -136,92 +136,105 @@ import GenreMenu from './GenreMenu';
 
 
   return (
-     <div
-      className={`z-[100] md:h-20 w-full flex absolute  overflow-visible flex-row justify-between
+    <div
+      className={`z-[100] w-full flex flex-col md:flex-row md:h-20 absolute overflow-visible
         ${user ? "bg-black" : "bg-gradient-to-b from-black to-transparent"}`}
     >
-       {/* <div
-      className={`z-50 md:h-20 w-full flex flex-col absolute justify-center overflow-hidden md:flex-row md:justify-between
-       ${user ? "bg-black" : "bg-gradient-to-b from-black to-transparent"}`}
-     > */}
-      <div className='m-2 pt-2 md:pt-0 flex md:items-center'>
+      {/* Top Row: Logo, Navigation, and User Menu */}
+      <div className='flex items-center justify-between w-full md:w-auto px-2 md:px-0 py-2 md:py-0'>
+        {/* Logo */}
         <img 
-          className='w-24 md:p-2 md:w-2/12 md:mx-0 cursor-pointer hover:opacity-80 transition-opacity'
+          className='w-20 md:w-24 md:p-2 cursor-pointer hover:opacity-80 transition-opacity flex-shrink-0'
           src={LOGO_URL}
           alt='logo'
           onClick={handleLogoClick}
         />
+        
+        {/* Navigation Buttons - Only show on mobile if there's space */}
         {user && (
-          <>
+          <div className='flex items-center gap-1 md:gap-2 flex-shrink-0'>
             <button
-              className='md:m-2 p-2 font-light text-white text-xs  md:text-sm whitespace-nowrap'
+              className='px-2 py-1 md:px-2 md:py-2 font-light text-white text-xs md:text-sm whitespace-nowrap hover:text-gray-300 transition-colors'
               onClick={handleGPTSearchClick}
             >
               {showGPTSearch ? "Home" : "GPT"}
             </button>
             <button
-              className='md:m-2 p-2 font-light text-white text-xs  md:text-sm whitespace-nowrap'
+              className='px-2 py-1 md:px-2 md:py-2 font-light text-white text-xs md:text-sm whitespace-nowrap hover:text-gray-300 transition-colors'
               onClick={() => navigate("/tvshows")}
             >
               TV Shows
             </button>
             <GenreMenu />
-            <div className="hidden md:block">
-              <SearchBar />
+          </div>
+        )}
+        
+        {/* User Menu */}
+        {user && (
+          <div className='flex items-center gap-2 md:gap-4 relative flex-shrink-0' ref={menuRef}>
+            {showGPTSearch && (
+              <select
+                className='p-1 text-xs md:text-sm rounded-sm outline-none bg-black border border-gray-600 text-white'
+                onChange={handleLanguageChange}
+              >
+                {SUPPORTED_LANGUAGES.map((lang) => (
+                  <option key={lang.identifier} value={lang.identifier}>
+                    {lang.name}
+                  </option>
+                ))}
+              </select>
+            )}
+            <div className="relative">
+              <img
+                className="w-8 h-8 md:w-10 md:h-10 object-cover rounded-md cursor-pointer hover:opacity-80 transition-opacity flex-shrink-0"
+                src={user?.photoURL || PHOTO_URL}
+                alt='userIcon'
+                onClick={() => setShowUserMenu(!showUserMenu)}
+                onError={(e) => {
+                  // Fallback to default photo if image fails to load
+                  if (e.target.src !== PHOTO_URL) {
+                    e.target.src = PHOTO_URL;
+                  } else {
+                    // If default also fails, use a simple placeholder
+                    e.target.style.display = 'none';
+                  }
+                }}
+                style={{ minWidth: '32px', minHeight: '32px' }}
+              />
+              {showUserMenu && (
+                <div className="absolute right-0 mt-2 w-48 bg-black border border-gray-700 rounded-md shadow-lg z-[200]">
+                  <div className="py-1">
+                    <button
+                      onClick={handleMyListClick}
+                      className="w-full text-left px-4 py-2 text-sm text-white hover:bg-gray-800 transition-colors"
+                    >
+                      My List
+                    </button>
+                    <button
+                      onClick={handleSignOut}
+                      className="w-full text-left px-4 py-2 text-sm text-white hover:bg-gray-800 transition-colors"
+                    >
+                      Sign Out
+                    </button>
+                  </div>
+                </div>
+              )}
             </div>
-          </>
+          </div>
         )}
       </div>
+      
+      {/* Search Bar Row: Visible on mobile below navigation */}
       {user && (
-        <div className='m-1 px-2 flex items-center relative' ref={menuRef}>
-          {showGPTSearch && (
-            <select
-              className='p-1 text-xs md:text-sm rounded-sm outline-none'
-              onChange={handleLanguageChange}
-            >
-              {SUPPORTED_LANGUAGES.map((lang) => (
-                <option key={lang.identifier} value={lang.identifier}>
-                  {lang.name}
-                </option>
-              ))}
-            </select>
-          )}
-          <div className="relative">
-            <img
-              className="mx-2 md:mx-10 w-10 h-10 object-cover rounded-md cursor-pointer hover:opacity-80 transition-opacity"
-              src={user?.photoURL || PHOTO_URL}
-              alt='userIcon'
-              onClick={() => setShowUserMenu(!showUserMenu)}
-              onError={(e) => {
-                // Fallback to default photo if image fails to load
-                if (e.target.src !== PHOTO_URL) {
-                  e.target.src = PHOTO_URL;
-                } else {
-                  // If default also fails, use a simple placeholder
-                  e.target.style.display = 'none';
-                }
-              }}
-              style={{ minWidth: '40px', minHeight: '40px' }}
-            />
-            {showUserMenu && (
-              <div className="absolute right-0 mt-2 w-48 bg-black border border-gray-700 rounded-md shadow-lg z-[200]">
-                <div className="py-1">
-                  <button
-                    onClick={handleMyListClick}
-                    className="w-full text-left px-4 py-2 text-sm text-white hover:bg-gray-800 transition-colors"
-                  >
-                    My List
-                  </button>
-                  <button
-                    onClick={handleSignOut}
-                    className="w-full text-left px-4 py-2 text-sm text-white hover:bg-gray-800 transition-colors"
-                  >
-                    Sign Out
-                  </button>
-                </div>
-              </div>
-            )}
-          </div>
+        <div className="w-full px-2 pb-2 md:hidden">
+          <SearchBar />
+        </div>
+      )}
+      
+      {/* Desktop Search Bar: Inline with navigation */}
+      {user && (
+        <div className="hidden md:flex md:items-center md:flex-1 md:justify-center md:px-4">
+          <SearchBar />
         </div>
       )}
     </div>

@@ -6,12 +6,14 @@ export const PHOTO_URL =
   "https://occ-0-2041-3662.1.nflxso.net/dnm/api/v6/vN7bi_My87NPKvsBoib006Llxzg/AAAABStlS0MPUGcy6Ovyeia-3ddnnXNb2Lri4P4H4QCFuR_yaGs0umyqHUDOZcOBKF8MFUGHX07txAW70z7wq_S9AKGQ_MixrLQ.png?r=a4b";
 // export const MOVIEBG_URL = "https://api.themoviedb.org/3/movie/939243/videos?language=en-US";
 // export const MOVIELIST_URL = "https://api.themoviedb.org/3/movie/now_playing?page=1";
+// Get TMDB Bearer Token from environment variable or use fallback
+const TMDB_BEARER_TOKEN = process.env.REACT_APP_TMDB_BEARER_TOKEN || "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0ZDA4MDUzNmE5MDA1YWQ2YTJjYjViMWRmZmJjNzJlNCIsIm5iZiI6MTYyMDE3NzQ1OC40OTYsInN1YiI6IjYwOTFmMjMyZThkMGI0MDA3Njg5YjFjZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.7qDvDIUsWv11Z7B60RoLSJpgwCcw6o_ywAT7K-FCcqI";
+
 export const API_OPTIONS = {
   method: "GET",
   headers: {
     accept: "application/json",
-    Authorization:
-      `Bearer ${process.env.REACT_APP_TMDB_BEARER_TOKEN || "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0ZDA4MDUzNmE5MDA1YWQ2YTJjYjViMWRmZmJjNzJlNCIsIm5iZiI6MTYyMDE3NzQ1OC40OTYsInN1YiI6IjYwOTFmMjMyZThkMGI0MDA3Njg5YjFjZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.7qDvDIUsWv11Z7B60RoLSJpgwCcw6o_ywAT7K-FCcqI"}`,
+    Authorization: `Bearer ${TMDB_BEARER_TOKEN}`,
   },
 };
 export const IMG_CDN_URL = "https://image.tmdb.org/t/p/w500/";
