@@ -32,6 +32,7 @@ const MovieCard = ({posterPath, movieId, movie}) => {
       // Use provided movie object if it has id
       setMovieData(movie);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [movieId, movie, user]);
   
   if(!posterPath) return null;

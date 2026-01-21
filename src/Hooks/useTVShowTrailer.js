@@ -27,6 +27,7 @@ const useTVShowTrailer = (tvShowId) => {
 
   useEffect(() => {
     getTVShowVideo();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tvShowId]);
 };
 

@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getAdditionalUserInfo } from "firebase/auth";
 
 const userSlice = createSlice({
   name: "user",

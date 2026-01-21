@@ -18,6 +18,7 @@ const useSimilarMovies = (movieId) => {
 
   useEffect(() => {
     getSimilarMovies();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [movieId]);
 };
 

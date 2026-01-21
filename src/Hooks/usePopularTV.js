@@ -18,6 +18,7 @@ const usePopularTV = () => {
 
   useEffect(() => {
     !popularTV && getPopularTV();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 };
 

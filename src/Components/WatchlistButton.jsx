@@ -40,6 +40,7 @@ const WatchlistButton = ({ movie, variant = "absolute" }) => {
     };
 
     checkStatus();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [movie?.id, watchlist, user?.uid]);
 
   const handleToggleWatchlist = async (e) => {

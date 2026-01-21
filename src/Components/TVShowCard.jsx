@@ -30,6 +30,7 @@ const TVShowCard = ({posterPath, tvShowId, tvShow}) => {
     } else if (tvShow && tvShow.id) {
       setTVShowData(tvShow);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tvShowId, tvShow, user]);
   
   if(!posterPath) return null;

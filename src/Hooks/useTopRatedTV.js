@@ -18,6 +18,7 @@ const useTopRatedTV = () => {
 
   useEffect(() => {
     !topRatedTV && getTopRatedTV();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 };
 

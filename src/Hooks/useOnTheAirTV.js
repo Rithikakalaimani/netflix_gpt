@@ -18,6 +18,7 @@ const useOnTheAirTV = () => {
 
   useEffect(() => {
     !onTheAirTV && getOnTheAirTV();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 };
 
