@@ -4,11 +4,32 @@ A modern, AI-powered movie recommendation platform built with React. NetflixGPT 
 
 🌐 **Live Demo**: [https://netflix-gpt-vdpk.vercel.app/](https://netflix-gpt-vdpk.vercel.app/)
 
-![NetflixGPT Screenshot](https://github.com/Rithikakalaimani/netflix_gpt/blob/e1bb5a756952cba035ee923d2a4d9293e75df386/screenshot/Screenshot%202025-01-25%20at%2012.00.48%E2%80%AFAM.png)
+## 📸 Screenshots
 
-![NetflixGPT Screenshot](https://github.com/Rithikakalaimani/netflix_gpt/blob/1dff7f1672e5ceb4d68dbe0d2a55815aa3cf8b8e/screenshot/Screenshot%202025-01-25%20at%2012.01.14%E2%80%AFAM.png)
+<div align="center">
+  
+### Home Page - Browse Movies
+![NetflixGPT Home Page](https://github.com/Rithikakalaimani/netflix_gpt/blob/main/screenshot/Screenshot%202026-01-22%20at%2012.07.10%20AM.png)
 
-![NetflixGPT Screenshot](https://github.com/Rithikakalaimani/netflix_gpt/blob/d8e2cae8dfb7c51fffd9361a2392debcfeadcd02/screenshot/Screenshot%202025-01-26%E2%80%AFAM.png)
+### Movie Details Page
+![NetflixGPT Movie Details](https://github.com/Rithikakalaimani/netflix_gpt/blob/main/screenshot/Screenshot%202026-01-22%20at%2012.07.55%20AM.png)
+
+### GPT Search Interface
+![NetflixGPT GPT Search](https://github.com/Rithikakalaimani/netflix_gpt/blob/main/screenshot/Screenshot%202026-01-22%20at%2012.08.11%20AM.png)
+
+### TV Shows Browse Page
+![NetflixGPT TV Shows](https://github.com/Rithikakalaimani/netflix_gpt/blob/main/screenshot/Screenshot%202026-01-22%20at%2012.09.10%20AM.png)
+
+### Search Results
+![NetflixGPT Search Results](https://github.com/Rithikakalaimani/netflix_gpt/blob/main/screenshot/Screenshot%202026-01-22%20at%2012.09.36%20AM.png)
+
+### My Watchlist
+![NetflixGPT Watchlist](https://github.com/Rithikakalaimani/netflix_gpt/blob/main/screenshot/Screenshot%202026-01-22%20at%2012.09.53%20AM.png)
+
+### Mobile Responsive View
+![NetflixGPT Mobile View](https://github.com/Rithikakalaimani/netflix_gpt/blob/main/screenshot/Screenshot%202026-01-22%20at%2012.10.15%20AM.png)
+
+</div>
 
 ---
 
