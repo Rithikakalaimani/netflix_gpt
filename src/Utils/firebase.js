@@ -1,8 +1,15 @@
- // Import the functions you need from the SDKs you need
+// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { getFirestore, collection, doc, setDoc, getDoc, deleteDoc } from "firebase/firestore";
+import {
+  getFirestore,
+  collection,
+  doc,
+  setDoc,
+  getDoc,
+  deleteDoc,
+} from "firebase/firestore";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -10,17 +17,17 @@ import { getFirestore, collection, doc, setDoc, getDoc, deleteDoc } from "fireba
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 
-const firebaseConfig = { 
+const firebaseConfig = {
   apiKey: "AIzaSyD-m8IRCgCmKcSGFkIDkKNejpK8-PQua0s",
   authDomain: "netflixgpt-c1547.firebaseapp.com",
   projectId: "netflixgpt-c1547",
   storageBucket: "netflixgpt-c1547.firebasestorage.app",
   messagingSenderId: "681806232346",
   appId: "1:681806232346:web:09edf33d8aa589a1e14aa3",
-  measurementId: "G-VJ9VQRHCRT"
+  measurementId: "G-VJ9VQRHCRT",
 };
 
-// Initialize Firebase 
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 export const auth = getAuth();
@@ -30,21 +37,28 @@ export const db = getFirestore(app);
 export const addToWatchlist = async (userId, movie) => {
   try {
     if (!userId || !movie || !movie.id) {
-      console.error("Invalid parameters for addToWatchlist:", { userId, movie });
+      console.error("Invalid parameters for addToWatchlist:", {
+        userId,
+        movie,
+      });
       return false;
     }
 
     const watchlistRef = doc(db, "watchlists", userId);
     const watchlistDoc = await getDoc(watchlistRef);
-    
+
     if (watchlistDoc.exists()) {
       const currentWatchlist = watchlistDoc.data().movies || [];
       const movieExists = currentWatchlist.some((m) => m && m.id === movie.id);
-      
+
       if (!movieExists) {
-        await setDoc(watchlistRef, {
-          movies: [...currentWatchlist, movie],
-        }, { merge: true });
+        await setDoc(
+          watchlistRef,
+          {
+            movies: [...currentWatchlist, movie],
+          },
+          { merge: true },
+        );
         return true;
       }
       // Movie already exists - still return true
@@ -61,11 +75,17 @@ export const addToWatchlist = async (userId, movie) => {
     console.error("Error message:", error.message);
     // Check for common Firebase errors
     if (error.code === "permission-denied") {
-      console.error("❌ Firebase permission denied. Check Firestore security rules in Firebase Console.");
+      console.error(
+        "❌ Firebase permission denied. Check Firestore security rules in Firebase Console.",
+      );
       console.error("Go to: Firebase Console → Firestore Database → Rules");
-      console.error("Make sure authenticated users can write to /watchlists/{userId}");
+      console.error(
+        "Make sure authenticated users can write to /watchlists/{userId}",
+      );
     } else if (error.code === "unavailable") {
-      console.error("❌ Firebase service is temporarily unavailable. Please try again later.");
+      console.error(
+        "❌ Firebase service is temporarily unavailable. Please try again later.",
+      );
     } else if (error.code === "unauthenticated") {
       console.error("❌ User is not authenticated. Please sign in again.");
     }
@@ -76,20 +96,29 @@ export const addToWatchlist = async (userId, movie) => {
 export const removeFromWatchlist = async (userId, movieId) => {
   try {
     if (!userId || !movieId) {
-      console.error("Invalid parameters for removeFromWatchlist:", { userId, movieId });
+      console.error("Invalid parameters for removeFromWatchlist:", {
+        userId,
+        movieId,
+      });
       return false;
     }
 
     const watchlistRef = doc(db, "watchlists", userId);
     const watchlistDoc = await getDoc(watchlistRef);
-    
+
     if (watchlistDoc.exists()) {
       const currentWatchlist = watchlistDoc.data().movies || [];
-      const updatedWatchlist = currentWatchlist.filter((m) => m && m.id !== movieId);
-      
-      await setDoc(watchlistRef, {
-        movies: updatedWatchlist,
-      }, { merge: true });
+      const updatedWatchlist = currentWatchlist.filter(
+        (m) => m && m.id !== movieId,
+      );
+
+      await setDoc(
+        watchlistRef,
+        {
+          movies: updatedWatchlist,
+        },
+        { merge: true },
+      );
       return true;
     }
     return true;
@@ -104,7 +133,7 @@ export const getWatchlist = async (userId) => {
   try {
     const watchlistRef = doc(db, "watchlists", userId);
     const watchlistDoc = await getDoc(watchlistRef);
-    
+
     if (watchlistDoc.exists()) {
       return watchlistDoc.data().movies || [];
     }

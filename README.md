@@ -99,11 +99,37 @@ NetflixGPT/
 
 ## 🚀 Deployment
 
-- The app is deployed on Firebase Hosting.
-- Run the following command to deploy:
-  ```sh
-  npm run deploy
-  ```
+### Deploy to Vercel (Recommended)
+
+1. **Push your code to GitHub**
+   ```sh
+   git add .
+   git commit -m "Ready for deployment"
+   git push origin main
+   ```
+
+2. **Import to Vercel**
+   - Go to [vercel.com](https://vercel.com) and sign in
+   - Click "Add New..." → "Project"
+   - Import your GitHub repository
+   - Vercel will auto-detect Create React App
+
+3. **Add Environment Variables**
+   - In Vercel Dashboard → Settings → Environment Variables
+   - Add: `REACT_APP_GROQ_API_KEY=your_groq_api_key`
+
+4. **Deploy**
+   - Click "Deploy"
+   - Your app will be live at `https://your-project.vercel.app`
+
+📖 **Detailed deployment guide**: See [DEPLOYMENT.md](./DEPLOYMENT.md)
+
+### Deploy to Firebase Hosting
+
+Run the following command to deploy:
+```sh
+npm run deploy
+```
 
 ## 🤝 Contributing
 
