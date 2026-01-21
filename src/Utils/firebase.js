@@ -18,13 +18,13 @@ import {
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 
 const firebaseConfig = {
-  apiKey: "AIzaSyD-m8IRCgCmKcSGFkIDkKNejpK8-PQua0s",
-  authDomain: "netflixgpt-c1547.firebaseapp.com",
-  projectId: "netflixgpt-c1547",
-  storageBucket: "netflixgpt-c1547.firebasestorage.app",
-  messagingSenderId: "681806232346",
-  appId: "1:681806232346:web:09edf33d8aa589a1e14aa3",
-  measurementId: "G-VJ9VQRHCRT",
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY || "AIzaSyD-m8IRCgCmKcSGFkIDkKNejpK8-PQua0s",
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN || "netflixgpt-c1547.firebaseapp.com",
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID || "netflixgpt-c1547",
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET || "netflixgpt-c1547.firebasestorage.app",
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID || "681806232346",
+  appId: process.env.REACT_APP_FIREBASE_APP_ID || "1:681806232346:web:09edf33d8aa589a1e14aa3",
+  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID || "G-VJ9VQRHCRT",
 };
 
 // Initialize Firebase
